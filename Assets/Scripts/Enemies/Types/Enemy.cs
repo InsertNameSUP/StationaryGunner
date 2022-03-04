@@ -6,6 +6,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     Rigidbody2D rb;
+    public static List<Enemy> allEnemies = new List<Enemy>();
     public struct Stats
     {
         public int maxHealth;
@@ -22,7 +23,12 @@ public class Enemy : MonoBehaviour
     };
     public virtual void Awake()
     {
+        allEnemies.Add(this);
         rb = GetComponent<Rigidbody2D>();
+    }
+    private void OnDestroy()
+    {
+        allEnemies.Remove(this);
     }
     public int? Damage(int amount)
     {

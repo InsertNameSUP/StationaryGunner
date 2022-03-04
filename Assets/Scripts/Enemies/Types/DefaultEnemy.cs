@@ -18,6 +18,13 @@ public class DefaultEnemy : Enemy
     }
 
     // Update is called once per frame
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag.Equals("Player"))
+        {
+            Gunner.Damage(attributes.damage);
+        }
+    }
     void Update()
     {
         MoveTowardsPlayer(attributes.speed, 10);
