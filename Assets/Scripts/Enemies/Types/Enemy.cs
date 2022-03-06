@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D), typeof(Rigidbody2D))]
 public class Enemy : MonoBehaviour
 {
-    Rigidbody2D rb;
+    [HideInInspector] public Rigidbody2D rb;
     public static List<Enemy> allEnemies = new List<Enemy>();
     public struct Stats
     {

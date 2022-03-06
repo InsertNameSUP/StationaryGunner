@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public GameObject childTrail;
     public Rigidbody2D rb;
     public GameObject deathAnim;
     public int bulletLifetime = 10;
