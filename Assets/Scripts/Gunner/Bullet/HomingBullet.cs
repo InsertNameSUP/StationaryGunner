@@ -25,7 +25,8 @@ public class HomingBullet : Bullet
         if (rb == null) return;
         if (rb.velocity.sqrMagnitude > maxSpeed) return;
         // Change with a more sophisticated algorythm later
-        rb.AddForce((GetClosestEnemy().transform.position - transform.position).normalized * accel * Time.deltaTime, ForceMode2D.Force);
+        transform.up = (GetClosestEnemy().transform.position - transform.position).normalized;
+        rb.AddForce(transform.up * accel * Time.deltaTime, ForceMode2D.Force);
     }
     Enemy GetClosestEnemy()
     {
@@ -39,5 +40,9 @@ public class HomingBullet : Bullet
             }
         }
         return closestEnemy;
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(transform.position, transform.position + transform.up);
     }
 }
