@@ -28,6 +28,9 @@ public class DefaultEnemy : Enemy
     void Update()
     {
         transform.up = rb.velocity;
+    }
+    private void FixedUpdate()
+    {
         MoveTowardsPlayer(attributes.speed, 10);
     }
 }

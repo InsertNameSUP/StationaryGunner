@@ -1,9 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class HomingBullet : Bullet
 {
+    Vector3 direction;
+    [Tooltip("How Quickly the bullet builds up the desire to hit an enemy (being less careful about hitting player)")]public float attackGreed = 1f;
+    float avoidWeighting = 6f;
+    [Tooltip("How Quickly the bullet tracks the enemy")] public float bulletSpeed = 7f;
+    float attackWeighting = 4f;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,19 +20,25 @@ public class HomingBullet : Bullet
     public override void Update()
     {
         base.Update();
+        MoveToEnemy(5, 200);
 
     }
     private void FixedUpdate()
     {
-        MoveToEnemy(100, 100);
+
     }
-    void MoveToEnemy(float maxSpeed, float accel)
+    void MoveToEnemy(float speed, float rotSpeed)
     {
-        if (rb == null) return;
-        if (rb.velocity.sqrMagnitude > maxSpeed) return;
-        // Change with a more sophisticated algorythm later
-        transform.up = (GetClosestEnemy().transform.position - transform.position).normalized;
-        rb.AddForce(transform.up * accel * Time.deltaTime, ForceMode2D.Force);
+        avoidWeighting = Mathf.Lerp(avoidWeighting, 4f, Time.deltaTime * attackGreed);
+        attackWeighting = Mathf.Lerp(attackWeighting, 6f, Time.deltaTime * attackGreed);
+        print(avoidWeighting);
+        if (rb == null || GetClosestEnemy() == null) return;
+        direction = ((GetClosestEnemy().transform.position - transform.position).normalized * (attackWeighting / Vector3.Distance(Gunner.instance.transform.position, transform.position))) // Account for moving towards closest enemy. The further away + longer time the bullets alive, the more enticing it is to move towards enemy.
+                    + (transform.position - Gunner.instance.transform.position).normalized * 1/((Vector3.Distance(Gunner.instance.transform.position, transform.position))/ avoidWeighting); // Account for Gunner and move away. The further away + longer time the bullet is alive, the less it takes this into account.
+        direction.Normalize();
+        transform.up = direction;
+        transform.position = Vector3.Lerp(transform.position, transform.position + direction, Time.deltaTime * bulletSpeed);
+
     }
     Enemy GetClosestEnemy()
     {
@@ -43,6 +55,8 @@ public class HomingBullet : Bullet
     }
     private void OnDrawGizmos()
     {
+        Gizmos.DrawWireSphere(Gunner.instance.transform.position, 1);
+        Gizmos.DrawRay(transform.position + transform.up, direction);
         Gizmos.DrawLine(transform.position, transform.position + transform.up);
     }
 }

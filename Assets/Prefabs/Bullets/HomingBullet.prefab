@@ -146,8 +146,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 430bae14aaff4df4bae61013714b61e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  childTrail: {fileID: 0}
   rb: {fileID: 0}
   deathAnim: {fileID: 1062881234952880269, guid: 967a56b13bc6c7c4caea62303c349aeb,
     type: 3}
   bulletLifetime: 20
   damage: 10
+  attackGreed: 1.5
+  bulletSpeed: 7
