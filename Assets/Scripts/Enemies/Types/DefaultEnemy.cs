@@ -22,9 +22,8 @@ public class DefaultEnemy : Enemy
     {
         if(collision.gameObject.tag.Equals("Player"))
         {
-            Gunner.Damage(attributes.damage);
-            CameraController.instance.Shake(0.25f, 0.25f);
-           Destroy(this.gameObject);
+            Gunner.Damage(attributes.damage, true);
+            Destroy(this.gameObject);
         }
     }
     void Update()

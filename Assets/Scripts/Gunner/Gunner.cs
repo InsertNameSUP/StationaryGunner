@@ -32,7 +32,7 @@ public class Gunner : MonoBehaviour
 
     /// <param name="amount">Amount of health to take from player</param>
     /// <returns>New Health count (null if dead)</returns>
-    public static int? Damage(int amount)
+    public static int? Damage(int amount, bool camShake = true)
     {
         health = Mathf.Max(health - amount, 0); // If under 0, return 0
 
@@ -42,6 +42,7 @@ public class Gunner : MonoBehaviour
             Destroy(instance);
             return null;
         }
+        if(camShake) CameraController.instance.Shake(0.25f, 0.25f);
         return health;
     }
     public void SetHealth(int amount)

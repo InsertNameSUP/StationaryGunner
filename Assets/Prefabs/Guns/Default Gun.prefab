@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpawnOffset: 1
-  defBullet: {fileID: 5090740181906898432, guid: 35eb52ff51ea98949b8a8f363dd18727,
+  defBullet: {fileID: 5903444543762785243, guid: b8e3ff35e7c58a545b6983a7da368e5d,
     type: 3}
 --- !u!61 &5232431701429437026
 BoxCollider2D:

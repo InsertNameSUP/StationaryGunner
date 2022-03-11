@@ -30,7 +30,7 @@ public class GunBase : MonoBehaviour
         {
             newBullet = bulletType;
         }
-        newBullet.GetComponent<Rigidbody2D>().AddForce(transform.up * 100 * bulletSpeed); // Add initial bullet velocity
+        newBullet.GetComponent<Rigidbody2D>().AddForce(transform.up * 200 * bulletSpeed); // Add initial bullet velocity
     }
     private void OnDrawGizmosSelected()
     {

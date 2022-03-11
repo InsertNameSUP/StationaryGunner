@@ -42,6 +42,7 @@ public class Bullet : MonoBehaviour
         {
 
             Instantiate(deathAnim, transform.position, Quaternion.identity);
+            Gunner.Damage(damage);
             Destroy(gameObject);
         }
     }
