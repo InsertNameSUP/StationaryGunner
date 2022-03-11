@@ -17,6 +17,10 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetMouseButton(1))
+        {
+            Shake(0.25f, 0.25f);
+        }
     }
     public void Shake(float duration, float magnitude) {
         StartCoroutine(Util.Effects.Camera.CameraShake.Shake(Camera.main.transform, duration, magnitude));
