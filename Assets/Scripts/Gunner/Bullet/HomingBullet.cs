@@ -31,7 +31,6 @@ public class HomingBullet : Bullet
     {
         avoidWeighting = Mathf.Lerp(avoidWeighting, 4f, Time.deltaTime * attackGreed);
         attackWeighting = Mathf.Lerp(attackWeighting, 6f, Time.deltaTime * attackGreed);
-        print(avoidWeighting);
         if (rb == null || GetClosestEnemy() == null) return;
         direction = ((GetClosestEnemy().transform.position - transform.position).normalized * (attackWeighting / Vector3.Distance(Gunner.instance.transform.position, transform.position))) // Account for moving towards closest enemy. The further away + longer time the bullets alive, the more enticing it is to move towards enemy.
                     + (transform.position - Gunner.instance.transform.position).normalized * 1/((Vector3.Distance(Gunner.instance.transform.position, transform.position))/ avoidWeighting); // Account for Gunner and move away. The further away + longer time the bullet is alive, the less it takes this into account.
@@ -55,8 +54,6 @@ public class HomingBullet : Bullet
     }
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(Gunner.instance.transform.position, 1);
-        Gizmos.DrawRay(transform.position + transform.up, direction);
-        Gizmos.DrawLine(transform.position, transform.position + transform.up);
+        Gizmos.DrawLine(transform.position, direction);
     }
 }

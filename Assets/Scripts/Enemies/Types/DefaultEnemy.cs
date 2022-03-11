@@ -23,11 +23,13 @@ public class DefaultEnemy : Enemy
         if(collision.gameObject.tag.Equals("Player"))
         {
             Gunner.Damage(attributes.damage);
+            CameraController.instance.Shake(0.25f, 0.25f);
+           Destroy(this.gameObject);
         }
     }
     void Update()
     {
-        transform.up = rb.velocity;
+        transform.up = Vector3.Lerp(transform.up, rb.velocity, Time.deltaTime * 3f);
     }
     private void FixedUpdate()
     {
