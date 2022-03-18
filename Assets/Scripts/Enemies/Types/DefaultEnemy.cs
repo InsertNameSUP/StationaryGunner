@@ -10,6 +10,7 @@ public class DefaultEnemy : Enemy
         base.Awake();
         attributes = new Stats
         {
+            value = 250,
             maxHealth = 10,
             health = 10,
             damage = 10,

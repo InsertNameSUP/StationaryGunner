@@ -153,8 +153,9 @@ MonoBehaviour:
     type: 3}
   bulletLifetime: 20
   damage: 10
-  attackGreed: 2
+  attackGreed: 3
   bulletSpeed: 5.5
+  bulletRotSpeed: 4
 --- !u!96 &-8675871550494811200
 TrailRenderer:
   serializedVersion: 2

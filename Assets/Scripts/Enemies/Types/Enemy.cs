@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public static List<Enemy> allEnemies = new List<Enemy>();
     public struct Stats
     {
+        public int value;
         public int maxHealth;
         public int health;
         public float speed;
@@ -16,6 +17,7 @@ public class Enemy : MonoBehaviour
     }
     public Stats attributes = new Stats
     {
+        value = 250,
         maxHealth = 100,
         health = 100,
         damage = 10,
@@ -30,12 +32,12 @@ public class Enemy : MonoBehaviour
     {
         allEnemies.Remove(this);
     }
-    public int? Damage(int amount)
+    public int? Damage(int amount, bool addScore = true)
     {
         attributes.health = Mathf.Max(attributes.health - amount, 0); // If under 0, return 0
-
         if(attributes.health == 0)
         {
+            ScoreManager.AddScore(attributes.value);
             // Kill them with PostProcessing
             Destroy(gameObject);
             return null;
