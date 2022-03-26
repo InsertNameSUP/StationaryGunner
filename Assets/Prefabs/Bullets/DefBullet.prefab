@@ -151,4 +151,4 @@ MonoBehaviour:
   deathAnim: {fileID: 370841674932060941, guid: 958a1ab3a9102f04aa18c66de684da78,
     type: 3}
   bulletLifetime: 10
-  damage: 10
+  damage: 50

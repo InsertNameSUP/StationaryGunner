@@ -4,7 +4,9 @@ using UnityEngine;
 using Util.TwoD;
 public class EnemieSpawner : MonoBehaviour
 {
-    public GameObject test_Enemy;
+    private GameObject[] spawnables;
+    public GameObject defaultEnemy;
+    public GameObject speedEnemy;
     float spawnDelayTime = 0;
     [Range(1, 100)]public float spawnArea = 40f;
     [Range(0, 20)] public float spawnCooldown = 3f;
@@ -12,7 +14,13 @@ public class EnemieSpawner : MonoBehaviour
     void Start()
     {
     }
-
+    private void Awake()
+    {
+        spawnables = new GameObject[] {
+                       defaultEnemy,
+                       speedEnemy
+                       };
+    }
     // Update is called once per frame
     private void Update()
     {
@@ -27,7 +35,8 @@ public class EnemieSpawner : MonoBehaviour
     {
         float yPos = Random.Range(-spawnArea, spawnArea);
 
-        Instantiate(test_Enemy, Geometry.PositionOnCircle(new Vector3(0, 0, 0), spawnArea, yPos), Quaternion.identity);
+        // Dont minus 1 from spawnables.Length because Random.Range() is not inclusive when dealing with ints.
+        Instantiate(spawnables[(int)Random.Range(0, spawnables.Length)], Geometry.PositionOnCircle(new Vector3(0, 0, 0), spawnArea, yPos), Quaternion.identity);
     }
     private void OnDrawGizmosSelected()
     {

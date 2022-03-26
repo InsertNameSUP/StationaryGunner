@@ -7,13 +7,16 @@ public class Enemy : MonoBehaviour
 {
     [HideInInspector] public Rigidbody2D rb;
     public static List<Enemy> allEnemies = new List<Enemy>();
+
+    [System.Serializable]
     public struct Stats
     {
         public int value;
         public int maxHealth;
         public int health;
-        public float speed;
         public int damage;
+        public float acceleration;
+        public float maxSpeed;
     }
     public Stats attributes = new Stats
     {
@@ -21,7 +24,8 @@ public class Enemy : MonoBehaviour
         maxHealth = 100,
         health = 100,
         damage = 10,
-        speed = 5
+        acceleration = 5,
+        maxSpeed = 5,
     };
     public virtual void Awake()
     {

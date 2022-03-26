@@ -8,20 +8,12 @@ public class DefaultEnemy : Enemy
     public override void Awake()
     {
         base.Awake();
-        attributes = new Stats
-        {
-            value = 250,
-            maxHealth = 10,
-            health = 10,
-            damage = 10,
-            speed = 5
-        };
     }
 
     // Update is called once per frame
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag.Equals("Player"))
+        if (collision.gameObject.tag.Equals("Player"))
         {
             Gunner.Damage(attributes.damage, true);
             Destroy(this.gameObject);
@@ -33,6 +25,6 @@ public class DefaultEnemy : Enemy
     }
     private void FixedUpdate()
     {
-        MoveTowardsPlayer(attributes.speed, 10);
+        MoveTowardsPlayer(attributes.acceleration, attributes.maxSpeed);
     }
 }
