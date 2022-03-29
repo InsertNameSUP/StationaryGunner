@@ -7,6 +7,7 @@ public class EnemieSpawner : MonoBehaviour
     private GameObject[] spawnables;
     public GameObject defaultEnemy;
     public GameObject speedEnemy;
+    public GameObject armoredEnemy;
     float spawnDelayTime = 0;
     [Range(1, 100)]public float spawnArea = 40f;
     [Range(0, 20)] public float spawnCooldown = 3f;
@@ -18,7 +19,8 @@ public class EnemieSpawner : MonoBehaviour
     {
         spawnables = new GameObject[] {
                        defaultEnemy,
-                       speedEnemy
+                       speedEnemy,
+                       armoredEnemy,
                        };
     }
     // Update is called once per frame

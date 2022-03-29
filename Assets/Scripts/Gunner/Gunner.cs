@@ -5,18 +5,23 @@ using Util.TwoD;
 public class Gunner : MonoBehaviour
 {
     public static int health = 100;
-    public static GameObject instance = null;
+    public static Gunner instance = null;
+    public GameObject deathScreen;
     public float gunnerRotateSpeed = 1;
-    // Start is called before the first frame update
+    public static bool isDead = false;
     private void Awake()
     {
-        instance = gameObject;
+        instance = this;
+        isDead = false;
     }
     void Start()
     {
  
     }
-
+    private void OnDestroy()
+    {
+        deathScreen.active = true; // Probably a better method to do this. Find later.
+    }
     // Update is called once per frame
     void Update()
     {
@@ -29,7 +34,17 @@ public class Gunner : MonoBehaviour
     {
         GetComponent<Animator>().Play("MC_Damaged");
     }
-
+    public IEnumerator DeathScreenFadeIn(float speed)
+    {
+        CanvasGroup alphaController = deathScreen.GetComponent<CanvasGroup>();
+        float a = 0;
+        while (a < 1)
+        {
+            a += 0.05f * speed;
+            alphaController.alpha = a;
+            yield return null;
+        }
+    }
     /// <param name="amount">Amount of health to take from player</param>
     /// <returns>New Health count (null if dead)</returns>
     public static int? Damage(int amount, bool camShake = true)
@@ -39,7 +54,9 @@ public class Gunner : MonoBehaviour
         if (health == 0)
         {
             // Kill them with PostProcessing
-            Destroy(instance);
+            isDead = true;
+            UI.instance.StartCoroutine(Gunner.instance.DeathScreenFadeIn(0.25f));
+            Destroy(instance.gameObject);
             return null;
         }
         if(camShake) CameraController.instance.Shake(0.25f, 0.25f);

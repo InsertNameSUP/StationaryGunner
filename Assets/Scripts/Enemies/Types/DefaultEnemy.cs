@@ -23,6 +23,13 @@ public class DefaultEnemy : Enemy
     {
         transform.up = Vector3.Lerp(transform.up, rb.velocity, Time.deltaTime * 3f);
     }
+    public void MoveTowardsPlayer(float speed, float maxSpeed)
+    {
+        if (rb == null || Gunner.instance == null) return;
+        if (rb.velocity.sqrMagnitude > maxSpeed) return;
+        // Change with a more sophisticated algorythm later
+        rb.AddForce((Gunner.instance.transform.position - transform.position).normalized * speed * Time.deltaTime * 10);
+    }
     private void FixedUpdate()
     {
         MoveTowardsPlayer(attributes.acceleration, attributes.maxSpeed);

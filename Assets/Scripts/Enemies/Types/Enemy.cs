@@ -48,13 +48,6 @@ public class Enemy : MonoBehaviour
         }
         return attributes.health;
     }
-    public void MoveTowardsPlayer(float speed, float maxSpeed)
-    {
-        if (rb == null || Gunner.instance == null) return;
-            if (rb.velocity.sqrMagnitude > maxSpeed) return;
-        // Change with a more sophisticated algorythm later
-        rb.AddForce((Gunner.instance.transform.position - transform.position).normalized * speed * Time.deltaTime * 10);
-    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Pop.

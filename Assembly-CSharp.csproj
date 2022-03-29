@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Assets\BackgroundController.cs" />
     <Compile Include="Assets\CameraController.cs" />
+    <Compile Include="Assets\FlashEffect.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemieSpawner.cs" />
     <Compile Include="Assets\Scripts\Enemies\Types\DefaultEnemy.cs" />
     <Compile Include="Assets\Scripts\Enemies\Types\Enemy.cs" />
