@@ -70,7 +70,7 @@
     <Compile Include="Assets\Scripts\Enemies\EnemieSpawner.cs" />
     <Compile Include="Assets\Scripts\Enemies\Types\DefaultEnemy.cs" />
     <Compile Include="Assets\Scripts\Enemies\Types\Enemy.cs" />
-    <Compile Include="Assets\Scripts\GameManagers\ScoreManager.cs" />
+    <Compile Include="Assets\Scripts\GameManagers\Score\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\GameManagers\UI.cs" />
     <Compile Include="Assets\Scripts\Gunner\Bullet\Bullet.cs" />
     <Compile Include="Assets\Scripts\Gunner\Bullet\HomingBullet.cs" />

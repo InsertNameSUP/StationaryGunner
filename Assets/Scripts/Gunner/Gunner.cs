@@ -9,6 +9,8 @@ public class Gunner : MonoBehaviour
     public GameObject deathScreen;
     public float gunnerRotateSpeed = 1;
     public static bool isDead = false;
+    public delegate void Death();
+    public static event Death OnDeath;
     private void Awake()
     {
         instance = this;
@@ -17,10 +19,6 @@ public class Gunner : MonoBehaviour
     void Start()
     {
  
-    }
-    private void OnDestroy()
-    {
-        deathScreen.active = true; // Probably a better method to do this. Find later.
     }
     // Update is called once per frame
     void Update()
@@ -55,6 +53,7 @@ public class Gunner : MonoBehaviour
         {
             // Kill them with PostProcessing
             isDead = true;
+            if (OnDeath != null) OnDeath();
             UI.instance.StartCoroutine(Gunner.instance.DeathScreenFadeIn(0.25f));
             Destroy(instance.gameObject);
             return null;

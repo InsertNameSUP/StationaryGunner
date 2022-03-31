@@ -6,6 +6,9 @@ using UnityEngine.AI;
 public class HomingBullet : Bullet
 {
     Vector3 direction;
+    public float newTargetCooldown;
+    private float lastCallFindEnemy;
+    private Enemy target;
     [Tooltip("How Quickly the bullet builds up the desire to hit an enemy (being less careful about hitting player)")]public float attackGreed = 1f;
     float avoidWeighting = 6f;
     [Tooltip("How Quickly the bullet tracks the enemy")] public float bulletSpeed = 7f;
@@ -42,15 +45,23 @@ public class HomingBullet : Bullet
     Enemy GetClosestEnemy()
     {
         Enemy closestEnemy = null;
-        for(int i = 0; i < Enemy.allEnemies.Count; i ++)
+        if (Time.time > lastCallFindEnemy + newTargetCooldown || lastCallFindEnemy == 0) // Cooldown to reduce bullet "zig zagging" between enemies
         {
-            if (i == 0) { closestEnemy = Enemy.allEnemies[0]; continue; }
-            if(Vector3.Distance(transform.position, Enemy.allEnemies[i].transform.position) < Vector3.Distance(transform.position, closestEnemy.transform.position))
+            for (int i = 0; i < Enemy.allEnemies.Count; i++)
             {
-                closestEnemy = Enemy.allEnemies[i];
+                if (i == 0) { closestEnemy = Enemy.allEnemies[0]; continue; }
+                if (Vector3.Distance(transform.position, Enemy.allEnemies[i].transform.position) < Vector3.Distance(transform.position, closestEnemy.transform.position))
+                {
+                    closestEnemy = Enemy.allEnemies[i];
+                }
             }
+            lastCallFindEnemy = Time.time;
+            target = closestEnemy;
+            return closestEnemy;
+        } else
+        {
+            return target;
         }
-        return closestEnemy;
     }
     private void OnDrawGizmos()
     {
