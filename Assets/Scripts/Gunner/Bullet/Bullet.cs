@@ -28,8 +28,9 @@ public class Bullet : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        print("test");
         if(collision.gameObject.tag.Equals("Enemy"))
         {
             Enemy hit = collision.gameObject.GetComponent<Enemy>();

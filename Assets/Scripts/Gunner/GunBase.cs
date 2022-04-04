@@ -17,6 +17,7 @@ public class GunBase : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
+            AudioManager.instance.Play("Shoot");
             Shoot(1) ;
         }
     }

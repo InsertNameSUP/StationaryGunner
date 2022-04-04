@@ -4,10 +4,11 @@ using UnityEngine;
 using Util.TwoD;
 public class Gunner : MonoBehaviour
 {
-    public static int health = 100;
+    public static int health = 250;
     public static Gunner instance = null;
     public GameObject deathScreen;
     public float gunnerRotateSpeed = 1;
+    public static float bulletResilience = 1.5f;
     public static bool isDead = false;
     public delegate void Death();
     public static event Death OnDeath;
@@ -48,15 +49,19 @@ public class Gunner : MonoBehaviour
     public static int? Damage(int amount, bool camShake = true)
     {
         health = Mathf.Max(health - amount, 0); // If under 0, return 0
-
         if (health == 0)
         {
             // Kill them with PostProcessing
             isDead = true;
             if (OnDeath != null) OnDeath();
-            UI.instance.StartCoroutine(Gunner.instance.DeathScreenFadeIn(0.25f));
+            UI.instance.StartCoroutine(Gunner.instance.DeathScreenFadeIn(0.125f));
+            AudioManager.instance.Play("Death");
             Destroy(instance.gameObject);
             return null;
+        }
+        else
+        {
+            AudioManager.instance.Play("Damage");
         }
         if(camShake) CameraController.instance.Shake(0.25f, 0.25f);
         return health;

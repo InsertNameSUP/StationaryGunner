@@ -161,7 +161,6 @@ MonoBehaviour:
     value: 300
     maxHealth: 50
     health: 50
-    speed: 20
-    damage: 15
+    damage: 25
     acceleration: 10
     maxSpeed: 20

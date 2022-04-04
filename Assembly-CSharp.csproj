@@ -64,12 +64,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\BackgroundController.cs" />
-    <Compile Include="Assets\CameraController.cs" />
-    <Compile Include="Assets\FlashEffect.cs" />
+    <Compile Include="Assets\Scripts\BackgroundController.cs" />
+    <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemieSpawner.cs" />
     <Compile Include="Assets\Scripts\Enemies\Types\DefaultEnemy.cs" />
     <Compile Include="Assets\Scripts\Enemies\Types\Enemy.cs" />
+    <Compile Include="Assets\Scripts\FlashEffect.cs" />
+    <Compile Include="Assets\Scripts\GameManagers\AudioManager\AudioManager.cs" />
+    <Compile Include="Assets\Scripts\GameManagers\AudioManager\Sound.cs" />
     <Compile Include="Assets\Scripts\GameManagers\Score\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\GameManagers\UI.cs" />
     <Compile Include="Assets\Scripts\Gunner\Bullet\Bullet.cs" />

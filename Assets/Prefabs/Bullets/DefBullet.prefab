@@ -95,7 +95,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -146,7 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bcddaaa000f5c945a3b1180265b766e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  childTrail: {fileID: 0}
   rb: {fileID: 0}
   deathAnim: {fileID: 370841674932060941, guid: 958a1ab3a9102f04aa18c66de684da78,
     type: 3}

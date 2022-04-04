@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7675896872156714319}
   - component: {fileID: 7675896872156714318}
   m_Layer: 0
-  m_Name: ArmoredEnemy
+  m_Name: Armored Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,8 +159,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   attributes:
     value: 500
-    maxHealth: 250
-    health: 250
+    maxHealth: 200
+    health: 200
     damage: 75
     acceleration: 5
-    maxSpeed: 3
+    maxSpeed: 2.5

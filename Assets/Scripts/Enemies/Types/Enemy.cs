@@ -39,12 +39,18 @@ public class Enemy : MonoBehaviour
     public int? Damage(int amount, bool addScore = true)
     {
         attributes.health = Mathf.Max(attributes.health - amount, 0); // If under 0, return 0
-        if(attributes.health == 0)
+
+        if (attributes.health == 0)
         {
+            AudioManager.instance.Play("Enemy Death");
             ScoreManager.AddScore(attributes.value);
             // Kill them with PostProcessing
             Destroy(gameObject);
             return null;
+        }
+        else
+        {
+            AudioManager.instance.Play("Enemy Damage");
         }
         return attributes.health;
     }
