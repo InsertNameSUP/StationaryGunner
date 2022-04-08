@@ -64,6 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\GameStateManager.cs" />
     <Compile Include="Assets\Scripts\BackgroundController.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemieSpawner.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Assets\Scripts\Misc\UI\Util.UI.Effects.cs" />
     <Compile Include="Assets\Scripts\ScreenWrapper2D\ScreenWrapper.cs" />
     <Compile Include="Assets\Scripts\ScreenWrapper2D\ScreenWrappingObject.cs" />
+    <Compile Include="Assets\WheelSegment.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

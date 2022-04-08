@@ -11,17 +11,25 @@ public class ShopManager : MonoBehaviour
         public Sprite icon;
         public int cost;
         public int upgradeExponential;
+        public int count;
     };
+    public static ShopManager instance;
     public Upgrade[] gunUpgrades;
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        instance = this;
     }
-
-    // Update is called once per frame
-    void Update()
+    public void OnShopBuy(int id) // Called from button press
     {
-        
+        gunUpgrades[id].count += 1;
+        print("Bought" + gunUpgrades[id].name + " | Price: " + gunUpgrades[id].cost);
+         /* 
+         ____________________________
+         Handle bought upgrades here!
+         ____________________________
+         */
+        gunUpgrades[id].cost = gunUpgrades[id].cost * gunUpgrades[id].upgradeExponential;
+
     }
 }

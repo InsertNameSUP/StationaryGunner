@@ -44,11 +44,13 @@ public class UI : MonoBehaviour
                 shopCanvas.enabled = true;
                 StartCoroutine(FadeIn(shopCanvas.GetComponent<CanvasGroup>(), 0.125f));
                 isShopOpen = true;
+                GameStateManager.SetGameState(GameStateManager.GameState.Shop);
 
             } else 
             {
                 StartCoroutine(FadeOut(shopCanvas.GetComponent<CanvasGroup>(), 0.125f));
                 isShopOpen = false;
+                GameStateManager.SetGameState(GameStateManager.GameState.Playing);
             }
         }
     }
