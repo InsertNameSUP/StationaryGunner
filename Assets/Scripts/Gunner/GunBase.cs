@@ -15,7 +15,7 @@ public class GunBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) && GameStateManager.GetGameState() == GameStateManager.GameState.Playing)
         {
             AudioManager.instance.Play("Shoot");
             Shoot(1) ;

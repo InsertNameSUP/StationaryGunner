@@ -64,7 +64,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\GameStateManager.cs" />
     <Compile Include="Assets\Scripts\BackgroundController.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemieSpawner.cs" />
@@ -73,8 +72,10 @@
     <Compile Include="Assets\Scripts\FlashEffect.cs" />
     <Compile Include="Assets\Scripts\GameManagers\AudioManager\AudioManager.cs" />
     <Compile Include="Assets\Scripts\GameManagers\AudioManager\Sound.cs" />
+    <Compile Include="Assets\Scripts\GameManagers\GameStateManager\GameStateManager.cs" />
     <Compile Include="Assets\Scripts\GameManagers\Score\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\GameManagers\ShopManager.cs" />
+    <Compile Include="Assets\Scripts\GameManagers\TimeManager.cs" />
     <Compile Include="Assets\Scripts\GameManagers\UI.cs" />
     <Compile Include="Assets\Scripts\Gunner\Bullet\Bullet.cs" />
     <Compile Include="Assets\Scripts\Gunner\Bullet\HomingBullet.cs" />

@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start() // Order of execution can suck my dick
     {
-        ambientMusic = AudioManager.instance.FadeIn("Main Theme", 3f);
+        ambientMusic = AudioManager.instance.FadeIn("Main Theme", 3f, 0.3f);
     }
     private void Awake()
     {
@@ -21,7 +21,7 @@ public class CameraController : MonoBehaviour
     {
         if(Input.GetMouseButton(1))
         {
-            AudioManager.instance.FadeIn("Main Theme", 3f);
+            AudioManager.instance.FadeIn("Main Theme", 3f, 0.3f);
         }
     }
     void StopGameMusic ()

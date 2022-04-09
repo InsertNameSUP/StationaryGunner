@@ -27,7 +27,7 @@ public class Gunner : MonoBehaviour
 
 
         // Normalize to stop rotation speeding up if mouse is far away
-        transform.up = Vector3.Lerp(transform.up, (Mouse.GetMouseWorldPos()).normalized, Time.deltaTime * gunnerRotateSpeed); // Opposite Controls (Faces away from mouse)
+            transform.up = Vector3.Lerp(transform.up, (Mouse.GetMouseWorldPos()).normalized, Time.deltaTime * gunnerRotateSpeed);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

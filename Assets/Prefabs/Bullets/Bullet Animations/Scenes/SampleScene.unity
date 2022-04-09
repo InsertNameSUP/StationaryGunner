@@ -918,6 +918,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 633682159}
   m_CullTransparentMesh: 0
+--- !u!1 &636755112
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 636755113}
+  - component: {fileID: 636755114}
+  m_Layer: 0
+  m_Name: Time Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &636755113
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636755112}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 895369048}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &636755114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636755112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 298baa477a56da547a2e7041cd306fcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slowMotionTimeScale: 0.1
 --- !u!1 &661394442
 GameObject:
   m_ObjectHideFlags: 0
@@ -1068,7 +1112,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &693950779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1629,7 +1673,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Main Theme
     clip: {fileID: 8300000, guid: 61ab9aad9c96a1c40a375de855eddde6, type: 3}
-    volume: 1
+    volume: 0.092
     pitch: 1.12
     source: {fileID: 0}
   - name: Damage
@@ -1684,6 +1728,7 @@ Transform:
   - {fileID: 828499188}
   - {fileID: 1727701531}
   - {fileID: 172332533}
+  - {fileID: 636755113}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2152,6 +2197,7 @@ MonoBehaviour:
   highscoreUI: {fileID: 354590061063058180}
   healthBar: {fileID: 1414245681}
   healthBarWidth: 2
+  ppVolume: {fileID: 598000551}
 --- !u!4 &1728442480
 Transform:
   m_ObjectHideFlags: 0
@@ -3829,7 +3875,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!222 &8788508171660186031
 CanvasRenderer:
   m_ObjectHideFlags: 0

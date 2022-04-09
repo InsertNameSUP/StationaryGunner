@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.PostProcessing;
 public class UI : MonoBehaviour
 {
     [Header("Upgrade Shop")]
@@ -22,13 +23,19 @@ public class UI : MonoBehaviour
     [Header("Health")]
     public RectTransform healthBar;
     [Range(0, 10)] public float healthBarWidth = 4f;
+
+    public PostProcessVolume ppVolume;
+    static Vignette ppVig;
     // Start is called before the first frame update
     void Start()
     {
+        ppVolume.profile.TryGetSettings<Vignette>(out ppVig);
         StartCoroutine(FadeOut(loadInCanvas, 0.125f));
+     
     }
     void Awake()
     {
+        shopCanvas.enabled = false;
         instance = this;
         _scoreUI = scoreUI;
         _highscoreUI = highscoreUI;
@@ -50,12 +57,27 @@ public class UI : MonoBehaviour
             {
                 StartCoroutine(FadeOut(shopCanvas.GetComponent<CanvasGroup>(), 0.125f));
                 isShopOpen = false;
+                shopCanvas.enabled = false;
                 GameStateManager.SetGameState(GameStateManager.GameState.Playing);
             }
         }
     }
-
-
+    public static IEnumerator vignetteFadeIn(float intensity, float speed)
+    {
+        while (ppVig.intensity.value < intensity)
+        {
+            ppVig.intensity.value += speed;
+            yield return null;
+        }
+    }
+    public static IEnumerator vignetteFadeOut(float speed)
+    {
+        while (ppVig.intensity.value > 0)
+        {
+            ppVig.intensity.value -= speed;
+            yield return null;
+        }
+    }
     IEnumerator FadeOut(CanvasGroup alphaController, float speed)
     {
         float a = 1;
