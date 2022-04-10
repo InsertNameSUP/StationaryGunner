@@ -27,7 +27,13 @@ public class Gunner : MonoBehaviour
 
 
         // Normalize to stop rotation speeding up if mouse is far away
+        if (GameStateManager.GetGameState() != GameStateManager.GameState.Paused && GameStateManager.GetGameState() != GameStateManager.GameState.Building)
+        {
             transform.up = Vector3.Lerp(transform.up, (Mouse.GetMouseWorldPos()).normalized, Time.deltaTime * gunnerRotateSpeed);
+        } else
+        {
+            transform.up = Vector3.Lerp(transform.up, Vector3.up, Time.deltaTime * gunnerRotateSpeed); // If in build mode or paused 
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

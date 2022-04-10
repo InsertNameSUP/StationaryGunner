@@ -41,24 +41,32 @@ public class UI : MonoBehaviour
         _highscoreUI = highscoreUI;
     }
     // Update is called once per frame
+    public void OpenShop()
+    {
+        shopCanvas.GetComponent<CanvasGroup>().alpha = 0;
+        shopCanvas.enabled = true;
+        StartCoroutine(FadeIn(shopCanvas.GetComponent<CanvasGroup>(), 0.125f));
+        isShopOpen = true;
+        GameStateManager.SetGameState(GameStateManager.GameState.Shop);
+    }
+
+    public void CloseShop()
+    {
+        StartCoroutine(FadeOut(shopCanvas.GetComponent<CanvasGroup>(), 0.125f));
+        isShopOpen = false;
+        shopCanvas.enabled = false;
+        GameStateManager.SetGameState(GameStateManager.GameState.Playing);
+    }
     void Update()
     {
         healthBar.sizeDelta = Vector2.Lerp(healthBar.sizeDelta, new Vector2(Gunner.health * healthBarWidth, healthBar.sizeDelta.y), Time.deltaTime * 3);
         if(Input.GetKeyDown(KeyCode.Tab))
         {
             if (!isShopOpen) {
-                shopCanvas.GetComponent<CanvasGroup>().alpha = 0;
-                shopCanvas.enabled = true;
-                StartCoroutine(FadeIn(shopCanvas.GetComponent<CanvasGroup>(), 0.125f));
-                isShopOpen = true;
-                GameStateManager.SetGameState(GameStateManager.GameState.Shop);
-
+                OpenShop();
             } else 
             {
-                StartCoroutine(FadeOut(shopCanvas.GetComponent<CanvasGroup>(), 0.125f));
-                isShopOpen = false;
-                shopCanvas.enabled = false;
-                GameStateManager.SetGameState(GameStateManager.GameState.Playing);
+                CloseShop();
             }
         }
     }

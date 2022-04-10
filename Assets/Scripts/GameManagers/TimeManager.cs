@@ -23,7 +23,9 @@ public class TimeManager : MonoBehaviour
             case GameStateManager.GameState.Shop:
                 StartSlowMotion(true);
                 break;
-
+            case GameStateManager.GameState.Building:
+                StartSlowMotion(true);
+                break;
             case GameStateManager.GameState.Playing:
                 StopSlowMotion();
                 break;
@@ -41,19 +43,19 @@ public class TimeManager : MonoBehaviour
             StopSlowMotion();
         }
     }
-    IEnumerator smoothSlow(Sound s)
+    IEnumerator smoothSlow(Sound s, float speed)
     {
         while(s.source.pitch > s.pitch * slowMotionTimeScale * 5)
         {
-            s.source.pitch -= 0.01f * slowMotionTimeScale;
+            s.source.pitch -= speed * slowMotionTimeScale;
             yield return null;
         }
     }
-    IEnumerator smoothReturn(Sound s)
+    IEnumerator smoothReturn(Sound s, float speed)
     {
         while (s.source.pitch < s.pitch)
         {
-            s.source.pitch += 0.01f * slowMotionTimeScale;
+            s.source.pitch += speed * slowMotionTimeScale;
             yield return null;
         }
     }
@@ -64,7 +66,7 @@ public class TimeManager : MonoBehaviour
         StartCoroutine(UI.vignetteFadeIn(0.4f, 0.01f));
         foreach(Sound s in AudioManager.instance.sounds)
         {
-            StartCoroutine(smoothSlow(s));
+            StartCoroutine(smoothSlow(s, 0.1f));
         }
     }
     void StopSlowMotion()
@@ -74,7 +76,7 @@ public class TimeManager : MonoBehaviour
         StartCoroutine(UI.vignetteFadeOut(0.01f));
         foreach (Sound s in AudioManager.instance.sounds)
         {
-            StartCoroutine(smoothReturn(s));
+            StartCoroutine(smoothReturn(s, 0.1f));
         }
     }
 }

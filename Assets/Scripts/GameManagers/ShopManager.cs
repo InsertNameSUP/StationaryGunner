@@ -22,6 +22,8 @@ public class ShopManager : MonoBehaviour
     }
     public void OnShopBuy(int id) // Called from button press
     {
+        UI.instance.CloseShop();
+        GameStateManager.SetGameState(GameStateManager.GameState.Building);
         gunUpgrades[id].count += 1;
         print("Bought" + gunUpgrades[id].name + " | Price: " + gunUpgrades[id].cost);
          /* 

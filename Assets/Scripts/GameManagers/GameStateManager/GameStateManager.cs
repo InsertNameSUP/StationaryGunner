@@ -10,7 +10,8 @@ public class GameStateManager : MonoBehaviour
     {
         Playing,
         Paused,
-        Shop
+        Shop,
+        Building
     };
     private GameState currentGameState;
     public static GameStateManager instance;
