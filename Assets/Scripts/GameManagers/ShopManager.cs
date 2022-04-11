@@ -9,6 +9,7 @@ public class ShopManager : MonoBehaviour
     {
         public string name;
         public Sprite icon;
+        public GameObject prefab;
         public int cost;
         public int upgradeExponential;
         public int count;
@@ -24,6 +25,7 @@ public class ShopManager : MonoBehaviour
     {
         UI.instance.CloseShop();
         GameStateManager.SetGameState(GameStateManager.GameState.Building);
+        BuildModeManager.instance.EnterBuildMode(gunUpgrades[id]);
         gunUpgrades[id].count += 1;
         print("Bought" + gunUpgrades[id].name + " | Price: " + gunUpgrades[id].cost);
          /* 

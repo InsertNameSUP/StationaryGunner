@@ -4,6 +4,7 @@ using UnityEngine;
 using Util.TwoD;
 public class Gunner : MonoBehaviour
 {
+    public List<Transform> gunSlots = new List<Transform>();
     public static int health = 250;
     public static Gunner instance = null;
     public GameObject deathScreen;
