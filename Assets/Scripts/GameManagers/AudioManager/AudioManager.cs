@@ -29,14 +29,14 @@ public class AudioManager : MonoBehaviour
         s.source.Play();
         return s;
     }
-    public Sound FadeIn(string name, float fadeInSpeed, bool loop = false)
+    public Sound FadeIn(string name, float fadeInSpeed, float targetVolume, bool loop = false)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null) { Debug.LogError("Sound File Not Found!"); return null; }
         s.source.volume = 0;
         s.source.loop = loop;
         s.source.Play();
-        StartCoroutine(DoFadeIn(s, 1f, 1));
+        StartCoroutine(DoFadeIn(s, 1f, targetVolume));
         return s;
     }
     IEnumerator DoFadeIn(Sound s, float fadeInSpeed, float targetVolume)

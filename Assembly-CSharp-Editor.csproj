@@ -64,7 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\GameManagers\Score\Editor\ScoreManagerDev.cs" />
+    <Compile Include="Assets\Scripts\GameManagers\GameStateManager\Editor\GameStateEditor.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Users/Alex Rubin/Desktop/Games/2019.4.10f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
